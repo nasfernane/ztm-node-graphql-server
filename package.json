@@ -1,0 +1,27 @@
+{
+  "name": "ztm-node-graphql-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nasfernane/ztm-node-graphql-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nasfernane/ztm-node-graphql-server/issues"
+  },
+  "homepage": "https://github.com/nasfernane/ztm-node-graphql-server#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "graphql": "^16.8.0",
+    "graphql-http": "^1.22.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
