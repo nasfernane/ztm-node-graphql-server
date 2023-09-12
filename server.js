@@ -1,5 +1,6 @@
 const express = require('express');
 const { createHandler } = require('graphql-http/lib/use/express');
+const expressPlayground = require('graphql-playground-middleware-express').default
 const { GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLFloat } = require('graphql');
 
 // using deprecated library express-graphql
@@ -36,7 +37,12 @@ const schema = new GraphQLSchema({
 
 const app = express();
 
-app.post('/graphql', createHandler({schema, rootValue: root}));
+app.post('/graphql', createHandler({
+  schema, 
+  rootValue: root,
+}));
+
+app.get('/playground', expressPlayground({ endpoint: '/graphql' }))
 
 // using deprecated library express-graphql
 // app.use('/graphql', graphqlHTTP({
