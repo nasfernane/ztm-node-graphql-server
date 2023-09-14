@@ -12,27 +12,13 @@ const typesArray = loadFilesSync('**/*', {
   extensions: ['graphql'],
 });
 
-// récupération des données
-const root = {
-  products: require('./products/products.model'),
-  orders: require('./orders/orders.model')
-};
+const resolversArray = loadFilesSync('**/*', {
+  extensions: ['resolvers.js'],
+});
 
 const schema = makeExecutableSchema({
   typeDefs: typesArray, 
-  resolvers: {
-    Query: {
-      products: async (parent) => {
-       console.log('Récupération des produits')
-       const products = await Promise.resolve(parent.products);
-       return products;
-      },
-      orders: (parent) => {
-        console.log('Récupération des commandes')
-        return parent.orders
-      }
-    }
-  }
+  resolvers: resolversArray
 })
 
 const app = express();
@@ -40,7 +26,6 @@ const app = express();
 // endpoint principal
 app.post('/graphql', createHandler({
   schema, 
-  rootValue: root,
 }));
 
 // endpoint bac à sable pour tester les requêtes
