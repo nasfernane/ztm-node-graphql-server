@@ -19,7 +19,20 @@ const root = {
 };
 
 const schema = makeExecutableSchema({
-  typeDefs: typesArray
+  typeDefs: typesArray, 
+  resolvers: {
+    Query: {
+      products: async (parent) => {
+       console.log('Récupération des produits')
+       const products = await Promise.resolve(parent.products);
+       return products;
+      },
+      orders: (parent) => {
+        console.log('Récupération des commandes')
+        return parent.orders
+      }
+    }
+  }
 })
 
 const app = express();
