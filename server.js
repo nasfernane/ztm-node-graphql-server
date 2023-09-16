@@ -33,5 +33,5 @@ app.get('/graphiql', expressPlayground({ endpoint: '/graphql' }))
 
 
 app.listen(PORT, () => {
-  console.log(`Running GraphQL server on port ${PORT}`)
+  console.log(`Running GraphQL server http://www.localhost:${PORT}/graphiql`)
 })
